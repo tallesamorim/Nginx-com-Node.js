@@ -11,7 +11,10 @@ const config = {
 };
 const connection = mysql.createConnection(config);
 
-const sql = `INSERT INTO people(name) values('ola mundo')`;
+const sqlIn = `CREATE TABLE IF NOT EXISTS people (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL)`;
+connection.query(sqlIn);
+
+const sql = `INSERT INTO people(name) values('Talles')`;
 connection.query(sql);
 
 app.get('/', (req,res) => {
